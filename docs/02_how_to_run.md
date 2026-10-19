@@ -87,6 +87,33 @@ Your browser opens at **http://localhost:8501**. The first load trains two model
 
 Stop the app with `Ctrl + C` in the terminal.
 
+### 5.1 Step by step: using the app
+
+**Start it**
+1. Open a terminal (Command Prompt, PowerShell or the VS Code terminal).
+2. Go into the project folder: `cd ML-based-Bulk-Modulus-Prediction`
+3. Run `streamlit run app.py` (or `python -m streamlit run app.py`).
+4. The browser opens by itself. If it doesn't, open **http://localhost:8501** manually.
+5. Wait about 30 s while the spinner says *"Training models"*. This only happens on the first load.
+
+**Predict from a formula (no file needed)**
+1. Stay on the first tab, **Predict from formula**.
+2. Click the *Chemical formula* box, delete the text, type e.g. `MgO`, and press **Enter**.
+3. The predicted bulk modulus appears, along with the DFT values if the material is in the dataset and a chart of where it sits among all materials.
+
+**Upload a CIF file**
+1. Click the **Upload your own CIF** tab (third tab at the top).
+2. In the upload box, either:
+   - click **Browse files** and choose a `.cif` file, or
+   - drag a `.cif` file from your file explorer and drop it onto the box.
+3. Ready-made files are in the **`examples/`** folder of this repo (`WC.cif`, `MgO.cif`, `Si.cif`...). See [`examples/README.md`](../examples/README.md) for the expected results.
+4. The app shows the material's formula, atoms, density and lattice, then the **Predicted K_VRH** in GPa. Expand *Computed descriptors* to see the 65 numbers the model used.
+5. To try another file, click the **✕** next to the uploaded file name, then upload a new one.
+
+**Getting your own CIF files:** go to [Materials Project](https://next-gen.materialsproject.org/) (free account), search a formula (e.g. `TiO2`), open a material, and use *Export as → CIF*. Only `.cif` files are accepted.
+
+**Browse test materials:** open the second tab and pick a material from the dropdown. You can type in the dropdown to search, e.g. `NaCl`. You'll see the predicted value, the actual value and the error, plus a red dot marking the material on the parity plot.
+
 ## 6. Troubleshooting
 
 | Problem | Fix |

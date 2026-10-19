@@ -65,6 +65,7 @@ src/train.py            model training, evaluation, plots
 results/                metrics (csv/md) and figures
 app.py                  Streamlit web app
 docs/                   project documentation
+examples/               sample CIF files to upload in the app
 ```
 
 ## Dataset
