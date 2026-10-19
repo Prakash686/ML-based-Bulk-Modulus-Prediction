@@ -2,6 +2,8 @@
 
 Predicting the Voigt-Reuss-Hill bulk modulus, `log10(K_VRH / GPa)`, of crystalline materials directly from their crystal structure, using the **Matbench `log_kvrh`** benchmark dataset (10,987 materials).
 
+> **Full documentation:** see the [`docs/`](docs/README.md) folder ([overview](docs/01_project_overview.md) · [how to run](docs/02_how_to_run.md) · [results](docs/03_results.md) · [code walkthrough](docs/04_code_walkthrough.md)).
+
 ## Pipeline
 
 1. **Load** – Matbench `log_kvrh` JSON (pymatgen `Structure` + target).
@@ -61,6 +63,8 @@ data/features.csv       generated descriptors + target
 src/featurize.py        structure -> descriptor extraction
 src/train.py            model training, evaluation, plots
 results/                metrics (csv/md) and figures
+app.py                  Streamlit web app
+docs/                   project documentation
 ```
 
 ## Dataset
