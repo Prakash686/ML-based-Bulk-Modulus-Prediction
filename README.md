@@ -41,6 +41,18 @@ python src/featurize.py   # ~20 s, writes data/features.csv
 python src/train.py       # ~few min, writes results/
 ```
 
+## Interactive app
+
+```bash
+streamlit run app.py
+```
+
+Opens at http://localhost:8501 with four tabs:
+- **Predict from formula** – type a formula such as `Fe2O3` or `WC` to get a predicted bulk modulus. This tab uses a composition-only Gradient Boosting model (test R² ≈ 0.85). If the formula is in the dataset, the DFT values are shown for comparison.
+- **Browse test materials** – pick any of the 2,198 held-out materials to see predicted vs. actual K_VRH and the material's structure details.
+- **Upload your own CIF** – predict from a full crystal structure using the structure-aware model (R² ≈ 0.91).
+- **Model performance** – metrics table and plots.
+
 ## Repository layout
 
 ```

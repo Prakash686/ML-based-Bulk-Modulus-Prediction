@@ -54,6 +54,25 @@ def _elem_table():
 ELEM_TABLE = _elem_table()
 
 
+def composition_features(composition):
+    """Composition-only descriptors (usable when only a chemical formula is known)."""
+    comp = composition.fractional_composition
+    els = [el.symbol for el in comp.elements]
+    w = np.array([comp[el] for el in els])
+    props = ELEM_TABLE.loc[els]
+    f = {}
+    for p in ELEM_TABLE.columns:
+        x = props[p].to_numpy()
+        mean = np.sum(w * x)
+        f[f"{p}_mean"] = mean
+        f[f"{p}_std"] = np.sqrt(np.sum(w * (x - mean) ** 2))
+        f[f"{p}_min"] = x.min()
+        f[f"{p}_max"] = x.max()
+        f[f"{p}_range"] = x.max() - x.min()
+    f["n_elements"] = len(els)
+    return f
+
+
 def featurize(struct_dict):
     s = Structure.from_dict(struct_dict)
     comp = s.composition.fractional_composition
